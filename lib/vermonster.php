@@ -17,14 +17,14 @@ class Client
   {
     $this->client = $options;
 
-    $this->lists = new Lists;
-
     $this->connect();
   }
 
   public function connect($token = NULL)
   {
     $this->connection = new Connection;
+
+    $this->lists = new Lists($this->connection);
   }
 }
 
