@@ -14,17 +14,18 @@ class Vermonster
 {
   public static $client,
                 $connection;
-  public $lists;
+  public $lists,
+         $tasks;
 
   public function __construct()
   {
     $this->lists = new Vermonster_Lists;
+    $this->tasks = new Vermonster_Tasks;
   }
 
   public static function setApiKeys($options = array())
   {
     self::$client = $options;
-
     self::connect();
   }
 
@@ -55,5 +56,5 @@ class Vermonster
 require(dirname(__FILE__) . "/vermonster/connection.php");
 require(dirname(__FILE__) . "/vermonster/authentication.php");
 require(dirname(__FILE__) . "/vermonster/lists.php");
-/*require(dirname(__FILE__) . "/vermonster/tasks.php");
-require(dirname(__FILE__) . "/vermonster/users.php");*/
+require(dirname(__FILE__) . "/vermonster/tasks.php");
+/*require(dirname(__FILE__) . "/vermonster/users.php");*/

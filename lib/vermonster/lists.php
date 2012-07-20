@@ -2,7 +2,7 @@
 
 class Vermonster_Lists
 {
-  public static function all()
+  public function all()
   {
     $response = Vermonster::connection()->get("v1/lists");
     $lists = array();
@@ -15,8 +15,8 @@ class Vermonster_Lists
 
   public function find($id)
   {
-    $reponse = Vermonster::connection()->get("v1/lists/" . $id);
-    return new Vermonster_List($reponse["body"]);
+    $response = Vermonster::connection()->get("v1/lists/" . $id);
+    return new Vermonster_List($response["body"]);
   }
 }
 
@@ -32,6 +32,11 @@ class Vermonster_List
   public function tasks()
   {
     $response = Vermonster::connection()->get("v1/lists/" . $this->info["id"] . "/tasks");
-    return $response["body"]; # Turn into Vermonster_Task object
+    $tasks = array();
+    foreach($response["body"] as $task)
+    {
+      $tasks[] = new Vermonster_Task($task);
+    }
+    return $tasks;
   }
 }

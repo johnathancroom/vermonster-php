@@ -66,9 +66,6 @@ $cheddar->lists->reorder(array(42, 12, 23));
 # Get one task.
 $task = $cheddar->tasks->find(42);
 
-# Get tasks in a list
-$tasks = $cheddar->tasks->from_list(42);
-
 # Update that task.
 $task->update(array("text" => "Boom!"));
 
