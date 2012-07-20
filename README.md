@@ -44,7 +44,7 @@ $lists = $cheddar->lists->all();
 $foobar = $cheddar->lists->find(42);
 
 # Get the tasks in that list.
-$tasks = $foobar->tasks();
+$tasks = $foobar->tasks;
 $tasks = $cheddar->lists->find(42)->tasks();
 
 # Update that list.
@@ -71,16 +71,16 @@ $tasks = $cheddar->tasks->from_list(42);
 $task->update(array("text" => "Boom!"));
 
 # Create a task in a list.
-$foobar->tasks()->create(array("text" => "Be awesome!"));
+$foobar->tasks->create(array("text" => "Be awesome!"));
 
 # Reorder...
-$foobar->tasks()->reorder(array(42, 12));
+$foobar->tasks->reorder(array(42, 12));
 
 # Archive completed items
-$foobar->tasks()->archive_completed();
+$foobar->tasks->archive_completed();
 
 # Archive all items!
-$foobar->tasks()->archive_all();
+$foobar->tasks->archive_all();
 ```
 
 
