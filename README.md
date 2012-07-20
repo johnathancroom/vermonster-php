@@ -11,6 +11,8 @@ Vermonster is a way to consume the [Cheddar API](https://cheddarapp.com/develope
 *Obviously this isn't all implemented yet. But eventually...*
 
 ```ruby
+require_once("path/to/lib/vermonster.php");
+
 Vermonster::setApiKeys(array("id" => "oauth-id", "secret" => "oauth-secret"));
 
 $cheddar = new Vermonster;
