@@ -2,8 +2,8 @@
 
 class Vermonster_Lists
 {
-  public function all()
+  public static function all()
   {
-    return Client::connection()->get("v1/lists");
+    return Vermonster::connection()->get("v1/lists");
   }
 }
