@@ -4,6 +4,7 @@ class Vermonster_Lists
 {
   public static function all()
   {
-    return Vermonster::connection()->get("v1/lists");
+    $response = Vermonster::connection()->get("v1/lists");
+    return $response["body"];
   }
 }

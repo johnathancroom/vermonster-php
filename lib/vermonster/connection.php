@@ -22,9 +22,10 @@ class Vermonster_Connection
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
     $data = curl_exec($ch);
+    $headers = curl_getinfo($ch);
     curl_close($ch);
 
-    return json_decode($data, true);
+    return array("headers" => $headers, "body" => json_decode($data, true));
   }
 
   public function post($path, $options = array())
@@ -46,8 +47,9 @@ class Vermonster_Connection
     curl_setopt($ch, CURLOPT_POSTFIELDS, $options_string);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $data = curl_exec($ch);
+    $headers = curl_getinfo($ch);
     curl_close($ch);
 
-    return json_decode($data, true);
+    return array("headers" => $headers, "body" => json_decode($data, true));
   }
 }
