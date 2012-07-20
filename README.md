@@ -12,6 +12,8 @@ Vermonster is a way to consume the [Cheddar API](https://cheddarapp.com/develope
 
 ```ruby
 Vermonster::setApiKeys(array("id" => "oauth-id", "secret" => "oauth-secret"));
+
+$cheddar = new Vermonster;
 ```
 
 
@@ -36,23 +38,23 @@ Vermonster_Authentication::is_authorized(); # Returns true/false
 
 ```ruby
 # Get all of your lists.
-$lists = Vermonster_Lists::all();
+$lists = $cheddar->lists->all();
 
 # Get a list called "Foobar" with an ID of 42.
-$foobar = Vermonster_Lists::find(42);
+$foobar = $cheddar->lists->find(42);
 
 # Get the tasks in that list.
-$tasks = $foobar::tasks();
-$tasks = Vermonster_Lists::find(42)::tasks();
+$tasks = $foobar->tasks();
+$tasks = $cheddar->lists->find(42)->tasks();
 
 # Update that list.
-$foobar::update(array("title" => "Barfoo"));
+$foobar->update(array("title" => "Barfoo"));
 
 # Make a new list called "Barfoo".
-$barfoo = Vermonster_Lists::create(array("title" => "Barfoo"));
+$barfoo = $cheddar->lists->create(array("title" => "Barfoo"));
 
 # Reorder your lists.
-Vermonster_Lists::reorder(array(42, 12, 23));
+$cheddar->lists->reorder(array(42, 12, 23));
 ```
 
 
@@ -60,26 +62,25 @@ Vermonster_Lists::reorder(array(42, 12, 23));
 
 ```ruby
 # Get one task.
-$task = Vermonster_Tasks::find(42);
+$task = $cheddar->tasks->find(42);
 
 # Get tasks in a list
-$tasks = Vermonster_Tasks::from_list(42);
+$tasks = $cheddar->tasks->from_list(42);
 
 # Update that task.
-$task::update(array("text" => "Boom!"));
+$task->update(array("text" => "Boom!"));
 
 # Create a task in a list.
-$foobar::tasks()::create(array("text" => "Be awesome!"));
+$foobar->tasks()->create(array("text" => "Be awesome!"));
 
 # Reorder...
-$foobar::tasks()::reorder(array(42, 12));
+$foobar->tasks()->reorder(array(42, 12));
 
 # Archive completed items
-$foobar::tasks()::archive();
-$foobar::tasks()::archive_completed();
+$foobar->tasks()->archive_completed();
 
 # Archive all items!
-$foobar::tasks()::archive_all();
+$foobar->tasks()->archive_all();
 ```
 
 
@@ -87,7 +88,7 @@ $foobar::tasks()::archive_all();
 
 ```ruby
 # Get info about yourself.
-$moi = Vermonster_User::info();
+$moi = $cheddar->me;
 ```
 
 ## Contributing

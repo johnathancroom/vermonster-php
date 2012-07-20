@@ -14,15 +14,21 @@ class Vermonster
 {
   public static $client,
                 $connection;
+  public $lists;
 
-  public function setApiKeys($options = array())
+  public function __construct()
+  {
+    $this->lists = new Vermonster_Lists;
+  }
+
+  public static function setApiKeys($options = array())
   {
     self::$client = $options;
 
     self::connect();
   }
 
-  public function setClient($options = array())
+  public static function setClient($options = array())
   {
     foreach($options as $key => $value)
     {
@@ -30,17 +36,17 @@ class Vermonster
     }
   }
 
-  public function getClient($key)
+  public static function getClient($key)
   {
     return self::$client[$key];
   }
 
-  public function connect($token = NULL)
+  public static function connect($token = NULL)
   {
     self::$connection = new Vermonster_Connection($token);
   }
 
-  public function connection()
+  public static function connection()
   {
     return self::$connection;
   }

@@ -4,6 +4,7 @@ class Vermonster_Connection
 {
   public $token;
 
+  # Initialize, with token header if available
   public function __construct($token)
   {
     if($token)
@@ -12,6 +13,7 @@ class Vermonster_Connection
     }
   }
 
+  # Do a GET request
   public function get($path)
   {
     $url = "https://api.cheddarapp.com/" . $path;
@@ -28,11 +30,12 @@ class Vermonster_Connection
     return array("headers" => $headers, "body" => json_decode($data, true));
   }
 
+  # Do a POST request
   public function post($path, $options = array())
   {
     $url = "https://api.cheddarapp.com/" . $path;
 
-    //urlify the data for the POST
+    # urlify the data for the POST
     $options_string = "";
     foreach($options as $key => $value)
     {
