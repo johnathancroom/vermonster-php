@@ -3,20 +3,21 @@
 Vermonster is a way to consume the [Cheddar API](https://cheddarapp.com/developer).
 
 **Want Ruby instead? Check out [vermonster](https://github.com/eturk/vermonster).**
+
 **Want Python instead? Check out [vermonster-py](https://github.com/jpennell/vermonster-py).**
 
 ## Objective
 
 *Obviously this isn't all implemented yet. But eventually...*
 
-```php
+```ruby
 Vermonster::setApiKeys(array("id" => "oauth-id", "secret" => "oauth-secret"));
 ```
 
 
 ### Authentication
 
-```php
+```ruby
 # Get the URL for the user to authorize the application.
 $url = Vermonster_Authentication::url();
 
@@ -24,16 +25,16 @@ $url = Vermonster_Authentication::url();
 # It redirects back to whatever you sent as callback URL.
 
 # In your controller (or wherever the callback URL is)...
-Vermonster_Authentication::token("code") # Returns true on success, false on failure
+Vermonster_Authentication::token("code"); # Returns true on success, false on failure
 
 # You are now authorized!
-Vermonster_Authentication::is_authorized() # Returns true/false
+Vermonster_Authentication::is_authorized(); # Returns true/false
 ```
 
 
 ### Lists
 
-```php
+```ruby
 # Get all of your lists.
 $lists = Vermonster_Lists::all();
 
@@ -57,7 +58,7 @@ Vermonster_Lists::reorder(array(42, 12, 23));
 
 ### Tasks
 
-```php
+```ruby
 # Get one task.
 $task = Vermonster_Tasks::find(42);
 
@@ -84,7 +85,7 @@ $foobar::tasks()::archive_all();
 
 ### User
 
-```php
+```ruby
 # Get info about yourself.
 $moi = Vermonster_User::info();
 ```
